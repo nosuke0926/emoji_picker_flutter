@@ -23,6 +23,30 @@ class EmojiPickerUtils {
     return EmojiPickerInternalUtils().getRecentEmojis();
   }
 
+  /// Returns a random emoji
+  Future<Emoji> getRandomEmoji(
+    List<CategoryEmoji> data, {
+    bool checkPlatformCompatibility = true,
+  }) async {
+    if (_allAvailableEmojiEntities.isEmpty) {
+      final emojiPickerInternalUtils = EmojiPickerInternalUtils();
+
+      final availableCategoryEmoji = checkPlatformCompatibility
+          ? await emojiPickerInternalUtils.filterUnsupported(data)
+          : data;
+
+      // Set all the emoji entities
+      for (var emojis in availableCategoryEmoji) {
+        _allAvailableEmojiEntities.addAll(emojis.emoji);
+      }
+    }
+    final random = Random();
+    final randomEmoji = _allAvailableEmojiEntities[
+        random.nextInt(_allAvailableEmojiEntities.length)];
+
+    return randomEmoji;
+  }
+
   /// Search for related emoticons based on keywords
   Future<List<Emoji>> searchEmoji(String keyword, List<CategoryEmoji> data,
       {bool checkPlatformCompatibility = true}) async {
