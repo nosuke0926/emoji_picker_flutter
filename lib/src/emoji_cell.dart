@@ -105,16 +105,9 @@ class EmojiCell extends StatelessWidget {
       fontSize: emojiSize,
       backgroundColor: Colors.transparent,
     );
-    final emojiText = Text(
-      emoji.emoji,
-      textScaleFactor: 1.0,
-      style: (textStyle == null ? style : textStyle!.merge(style)).copyWith(
-        fontFamilyFallback: [
-          'Apple Color Emoji',
-          'Noto Color Emoji',
-        ],
-      ),
-    );
+    final emojiText = Text(emoji.emoji,
+        textScaleFactor: 1.0,
+        style: textStyle == null ? style : textStyle!.merge(style));
 
     return Center(
       child: emoji.hasSkinTone &&
