@@ -35,3 +35,8 @@ flutter:
       web:
         pluginClass: EmojiPickerFlutterPluginWeb
         fileName: emoji_picker_flutter_web.dart
+
+  fonts:
+    - family: Noto Color Emoji
+      fonts:
+        - asset: assets/fonts/NotoColorEmoji-Regular.ttf

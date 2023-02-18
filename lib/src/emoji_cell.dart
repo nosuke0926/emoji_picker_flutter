@@ -111,6 +111,7 @@ class EmojiCell extends StatelessWidget {
       style: (textStyle == null ? style : textStyle!.merge(style)).copyWith(
         fontFamilyFallback: [
           'Apple Color Emoji',
+          'Noto Color Emoji',
         ],
       ),
     );
