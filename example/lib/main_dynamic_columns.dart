@@ -24,15 +24,19 @@ class MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  _onBackspacePressed() {
-    _controller
-      ..text = _controller.text.characters.toString()
-      ..selection = TextSelection.fromPosition(
-          TextPosition(offset: _controller.text.length));
-  }
-
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    const emojiPadding =
+        9 * 2; // 9 pixels on both left and right sides of each emoji.
+    final emojiSize = 32 *
+        (foundation.defaultTargetPlatform ==
+                TargetPlatform
+                    .iOS // Issue: https://github.com/flutter/flutter/issues/28894
+            ? 1.30
+            : 1.0);
+    final numEmojiColumns =
+        (screenSize.width / (emojiSize + emojiPadding)).floor();
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
@@ -102,15 +106,9 @@ class MyAppState extends State<MyApp> {
                   height: 250,
                   child: EmojiPicker(
                     textEditingController: _controller,
-                    onBackspacePressed: _onBackspacePressed,
                     config: Config(
-                      columns: 7,
-                      // Issue: https://github.com/flutter/flutter/issues/28894
-                      emojiSizeMax: 32 *
-                          (foundation.defaultTargetPlatform ==
-                                  TargetPlatform.iOS
-                              ? 1.30
-                              : 1.0),
+                      columns: numEmojiColumns,
+                      emojiSizeMax: emojiSize,
                       verticalSpacing: 0,
                       horizontalSpacing: 0,
                       gridPadding: EdgeInsets.zero,

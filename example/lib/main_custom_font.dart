@@ -6,18 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 /// This example covers some advanced topics, like custom emoji font,
 /// inserting emojis in [TextField] with [EditableTextState],
 /// altering the default emoji set, etc.
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   final _editKey = GlobalKey();
   final _focusNode = FocusNode();
   final TextEditingController _controller =
@@ -44,7 +46,7 @@ class _MyAppState extends State<MyApp> {
   /// [textEditingController] parameter in the [EmojiPicker] constructor
   /// (see basic example).
   _onEmojiSelected(Emoji emoji) {
-    print('_onEmojiSelected: ${emoji.emoji}');
+    debugPrint('_onEmojiSelected: ${emoji.emoji}');
 
     if (_controller.selection.base.offset < 0) {
       _updateTextEditingValue(TextEditingValue(
@@ -66,7 +68,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   _onBackspacePressed() {
-    print('_onBackspacePressed');
+    debugPrint('_onBackspacePressed');
     if (_controller.selection.base.offset < 0) {
       return;
     }
@@ -191,47 +193,42 @@ class _MyAppState extends State<MyApp> {
                     },
                     onBackspacePressed: _onBackspacePressed,
                     config: Config(
-                        columns: 7,
-                        // Issue: https://github.com/flutter/flutter/issues/28894
-                        emojiSizeMax: 32 *
-                            (!foundation.kIsWeb && Platform.isIOS ? 1.30 : 1.0),
-                        verticalSpacing: 0,
-                        horizontalSpacing: 0,
-                        gridPadding: EdgeInsets.zero,
-                        initCategory: Category.RECENT,
-                        bgColor: const Color(0xFFF2F2F2),
-                        indicatorColor: Colors.blue,
-                        iconColor: Colors.grey,
-                        iconColorSelected: Colors.blue,
-                        backspaceColor: Colors.blue,
-                        skinToneDialogBgColor: Colors.white,
-                        skinToneIndicatorColor: Colors.grey,
-                        enableSkinTones: false,
-                        showRecentsTab: true,
-                        recentsLimit: 28,
-                        replaceEmojiOnLimitExceed: false,
-                        noRecents: const Text(
-                          'No Recents',
-                          style: TextStyle(fontSize: 20, color: Colors.black26),
-                          textAlign: TextAlign.center,
-                        ),
-                        loadingIndicator:
-                            const Center(child: CircularProgressIndicator()),
-                        tabIndicatorAnimDuration: kTabScrollDuration,
-                        categoryIcons: const CategoryIcons(),
-                        buttonMode: ButtonMode.MATERIAL,
-                        checkPlatformCompatibility: false,
-                        emojiTextStyle:
-                            GoogleFonts.notoEmoji(color: Colors.black),
-                        // or TextStyle(fontFamily: 'NotoColorEmoji',
-                        //              color: Colors.blueAccent)
-
-                        // just for example: using only first 10 emojis
-                        // from each category:
-                        emojiSet: defaultEmojiSet
-                            .map((e) =>
-                                e.copyWith(emoji: e.emoji.take(10).toList()))
-                            .toList()),
+                      columns: 7,
+                      // Issue: https://github.com/flutter/flutter/issues/28894
+                      emojiSizeMax: 32 *
+                          (!foundation.kIsWeb && Platform.isIOS ? 1.30 : 1.0),
+                      verticalSpacing: 0,
+                      horizontalSpacing: 0,
+                      gridPadding: EdgeInsets.zero,
+                      initCategory: Category.RECENT,
+                      bgColor: const Color(0xFFF2F2F2),
+                      indicatorColor: Colors.blue,
+                      iconColor: Colors.grey,
+                      iconColorSelected: Colors.blue,
+                      backspaceColor: Colors.blue,
+                      skinToneDialogBgColor: Colors.white,
+                      skinToneIndicatorColor: Colors.grey,
+                      enableSkinTones: false,
+                      recentTabBehavior: RecentTabBehavior.RECENT,
+                      recentsLimit: 28,
+                      replaceEmojiOnLimitExceed: false,
+                      noRecents: const Text(
+                        'No Recents',
+                        style: TextStyle(fontSize: 20, color: Colors.black26),
+                        textAlign: TextAlign.center,
+                      ),
+                      loadingIndicator:
+                          const Center(child: CircularProgressIndicator()),
+                      tabIndicatorAnimDuration: kTabScrollDuration,
+                      categoryIcons: const CategoryIcons(),
+                      buttonMode: ButtonMode.MATERIAL,
+                      checkPlatformCompatibility: false,
+                      emojiTextStyle: GoogleFonts.notoColorEmoji(),
+                      // or for single colored Emoji use:
+                      // GoogleFonts.notoEmoji(color: Colors.black),
+                      // or TextStyle(fontFamily: 'NotoColorEmoji',
+                      //              color: Colors.blueAccent)),
+                    ),
                   )),
             ),
           ],
