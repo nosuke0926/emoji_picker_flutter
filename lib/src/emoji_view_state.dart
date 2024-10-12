@@ -1,4 +1,5 @@
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:flutter/material.dart';
 
 /// State that holds current emoji data
 class EmojiViewState {
@@ -7,6 +8,8 @@ class EmojiViewState {
     this.categoryEmoji,
     this.onEmojiSelected,
     this.onBackspacePressed,
+    this.onBackspaceLongPressed,
+    this.onShowSearchView,
   );
 
   /// List of all category including their emoji
@@ -17,4 +20,10 @@ class EmojiViewState {
 
   /// Callback when pressed on backspace
   final OnBackspacePressed? onBackspacePressed;
+
+  /// Callback when long pressed on backspace
+  final OnBackspaceLongPressed onBackspaceLongPressed;
+
+  /// Callback when pressed on search
+  final VoidCallback onShowSearchView;
 }

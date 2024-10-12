@@ -1,3 +1,95 @@
+## 3.1.0
+- Added Emoji for Transgender Flag and Hugging People (thx to everypizza1)
+- Replace `swapCategoryAndBottomBar` with `viewOrderConfig` to give more control over the order of each view (thx to coder-with-a-bushido)
+
+## 3.0.0
+- Upgrade to Flutter `3.24.0`, Dart `3.4.0` and dependencies e.g. `web: 1.0.0` (thx to @diegotori)
+- Allow custom icon for Backspace and Search button
+- Replace `showBackspaceButton` in `CategoryViewConfig` with `extraTab` to allow choosing between Backspace, Search or no extra button in category tab bar
+- Fix scroll issue on Linux
+- Remove `buttonColor` property in `SearchViewConfig` because it had no effect
+- Add `inputTextStyle` and `hintTextStyle` in `SearchViewConfig` for better customization
+- Fix issue with dark mode support in search view
+
+## 2.2.0
+
+- Downgrade Kotlin to 1.7.10
+- Migrate to DSL syntax for gradle setup
+- Migrate from from `dart:html` to `package:web` (thx @GleammerRay)
+- Minimum Flutter version `3.19.3`
+
+## 2.1.1
+
+- Address issue with inconsistent JVM-target compatibility (thx @GleammerRay)
+- Fix issue with ScrollController
+
+## 2.1.0
+
+- Add option to hide SearchView-Button in bottom navigation
+- Be able to change HintText in SearchView (thx @akvus)
+
+## 2.0.0 🚀
+
+- Better customization
+- Better support for emoji and custom font
+- Restructure of configurations
+- Added Search View feature
+- Update examples (Also added WhatsApp example)
+- Add auto-scroll support
+- Add long-press backspace support
+- Improve SkinTone Overlay
+- Updated Readme
+- Update License to MIT
+- Add tests
+
+## 2.0.0-dev.7
+
+- Improve emoji regex and its performance
+- Fix rendering issue with some emoji due to TextStyle handling
+- Add tests
+
+## 2.0.0-dev.6
+
+- Fix issue with `EmojiTextEditingController` during selection
+- Fix issue with onBackspacePressed logic
+- Fix example for custom font
+
+## 2.0.0-dev.5
+
+- Improve documentation
+- Improve examples
+- prioritize emojiTextStyle over emojiSizeMax
+- improve onBackspacePressed logic (trigger controller and callback method)
+
+## 2.0.0-dev.4
+
+- Improve SkinTone Overlay logic
+- Add WhatsApp example
+- Update min Flutter version to 3.16.0
+- Update deprecated API's
+
+## 2.0.0-dev.3
+
+- Add auto-scroll support by using `ScrollController`
+- Add long-press backspace support
+
+## 2.0.0-dev.2
+
+- Improve `EmojiTextEditingController` to ensure consistent appearance in Text and TextInput
+- Update examples code
+- Todo: Update ReadMe, Improve Search UI
+
+## 2.0.0-dev.1
+
+- Added search feature 🔎
+- Add more customization possibilities
+- Restructure & rename files
+
+## 1.6.4
+
+- Add long-press backspace support (thx @vedasjad)
+- Fix Auto-Scroll issue in TextField (thx @starfreck)
+
 ## 1.6.3
 
 - Added new Config parameter `customSkinColorOverlayHorizontalOffset` to fix issue with SkinColorOverlay in ShellRoute or other horizontal adjustments
